@@ -1,0 +1,11 @@
+services:
+  lemmy-report-notifier:
+    image:  burningturtle/lemmy-report-notifier:0.1
+    environment:
+      - LEMMY_URL=${LEMMY_URL}
+      - LEMMY_USERNAME=${LEMMY_USERNAME}
+      - LEMMY_PASSWORD=${LEMMY_PASSWORD}
+      - LEMMY_TOTP=${LEMMY_TOTP}
+      - NTFY_URL=${NTFY_URL}
+      - PULLING_FREQUENCY=${PULLING_FREQUENCY}
+    #restart: unless-stopped
