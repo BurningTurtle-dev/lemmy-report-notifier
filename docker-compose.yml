@@ -1,6 +1,6 @@
 services:
   lemmy-report-notifier:
-    image:  burningturtle/lemmy-report-notifier:0.2
+    image:  burningturtle/lemmy-report-notifier:1.0
     environment:
       - LEMMY_URL=${LEMMY_URL}
       - LEMMY_USERNAME=${LEMMY_USERNAME}
