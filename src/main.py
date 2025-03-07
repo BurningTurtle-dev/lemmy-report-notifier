@@ -6,11 +6,12 @@ import os
 import requests
 
 lemmy_url = os.environ['LEMMY_URL']
-username = os.environ['LEMMY_USERNAME']
-password = os.environ['LEMMY_PASSWORD']
+username = str(os.environ['LEMMY_USERNAME']).encode('unicode-escape').decode()
+password = str(os.environ['LEMMY_PASSWORD']).encode('unicode-escape').decode()
 totp = os.environ['LEMMY_TOTP']
 ntfy_url = os.environ['NTFY_URL']
 pulling_frequency = int(os.environ['PULLING_FREQUENCY'])
+timeout = int(os.environ['TIMEOUT'])
 
 sent_reports = list()
 
@@ -50,7 +51,7 @@ def get_info() -> list :
     return messages
 
 print("started")
-lemmy = Lemmy(lemmy_url,request_timeout=2)
+lemmy = Lemmy(lemmy_url,request_timeout=timeout)
 
 if totp is None:
     lemmy.log_in(username, password)

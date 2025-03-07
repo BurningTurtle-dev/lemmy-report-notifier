@@ -8,4 +8,5 @@ services:
       - LEMMY_TOTP=${LEMMY_TOTP}
       - NTFY_URL=${NTFY_URL}
       - PULLING_FREQUENCY=${PULLING_FREQUENCY}
-    #restart: unless-stopped
+      - TIMEOUT=${TIMEOUT}
+    restart: unless-stopped
