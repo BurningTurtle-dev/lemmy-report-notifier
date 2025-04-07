@@ -27,8 +27,14 @@ This function get all nessessary information from the Lemmy server
 def get_info() -> list :
     messages = list()
 
-    reports_posts = lemmy.post.report_list(unresolved_only="true")
-    reports_comments = lemmy.comment.report_list(unresolved_only="true")
+    try:
+        reports_posts = lemmy.post.report_list(unresolved_only="true")
+        reports_comments = lemmy.comment.report_list(unresolved_only="true")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return messages
+    
     reports = reports_comments + reports_posts
 
     unresolved_reports = list()
